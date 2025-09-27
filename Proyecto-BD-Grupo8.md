@@ -84,134 +84,16 @@
 
 ## Capítulo II: MARCO CONCEPTUAL
 
-### Manejo de permisos a nivel de usuarios de base de datos
-
-.
-
-- Usuarios de base de datos:
-. 
-
-- Roles fijos en bases de datos:
-.
-
-- Roles de base de datos definidos por el usuario:
-.
-
-### Procedimientos y funciones almacenadas
-
-.
-
-.
-
-### Optimización de consultas a través de índices
-.
-
-.
-
-.
-
-### Vistas y vistas indexadas
-.
-
-Beneficios de las vistas indexadas:
-
-.
 
 
 ## Capítulo III: METODOLOGÍA SEGUIDA
 
-### Descripción de la elaboración del trabajo
-
-.
-
-.
-
-.
-
-### Herramientas 
-
-Las herramientas empleadas para el desarrollo del proyecto fueron:
-
-GitHub: Utilizado como repositorio para almacenar y gestionar los avances del trabajo.
-SQL Server Management Studio 20: Herramienta empleada para el desarrollo del script y las pruebas correspondientes.
-ERDPlus: Utilizado para la elaboración del diagrama entidad-relación.
 
 ## Capítulo IV: DESARROLLO DEL TEMA / PRESENTACIÓN DE RESULTADOS
 
 ### Modelo Relacional 
 
 ![Modelo Relacional IMG](https://github.com/Renata281/Proyecto-BD-Grupo8/blob/b3fc33d9773402642fc2b9b344095664ffa4c137/Modelo_Relacional_Grupo_8.png)
-	
-### Diccionario de Datos
-
-### Características de la Tabla:
-- **Nombre**: 
-- **Módulo**: 
-- **Descripción**: 
-
-### Características de los Datos
-
-
-#### Restricciones
-
-
-#### Claves Foráneas
-
-
----
-
-### Modelo Físico
-
-
-### Creación y gestión de Permisos:
-
-#### Permisos a nivel de usuarios
-
-.
-
-#### Permisos a nivel de roles del DBMS
-
-.
- 
-### Procedimientos y Funciones Almacenadas 
-
-#### 1. Procedimientos Almacenados
-
-.
-
-##### Procedimiento: 
-
-- **Objetivo**:
-- **Descripción**: 
-- **Ejemplo de Uso**:
-- **Resultado Obtenido**:
-
-.
-
-
-
-#### 2. Funciones Almacenadas
-
-.
-
-##### Función:
-
-- **Objetivo**:
-- **Descripción**: 
-- **Ejemplo de Uso**:
-- **Resultado Obtenido**:
-
-#### 3. Resultados de las Pruebas de Rendimiento
-
-.
-
-### Uso de indices
-
-.
-
-### Vistas y Vistas Indexadas
-
-.
 
 ## Capítulo V: CONCLUSIONES 
 . 
