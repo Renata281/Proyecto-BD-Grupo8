@@ -140,7 +140,7 @@ ERDPlus: Utilizado para la elaboración del diagrama entidad-relación.
 
 ### Modelo Relacional 
 
-![Modelo Relacional IMG]()
+![Modelo Relacional IMG](https://github.com/Renata281/Proyecto-BD-Grupo8/blob/b3fc33d9773402642fc2b9b344095664ffa4c137/Modelo_Relacional_Grupo_8.png)
 	
 ### Diccionario de Datos
 
