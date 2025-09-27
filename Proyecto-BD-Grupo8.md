@@ -46,27 +46,30 @@
 
 ## Capítulo I: INTRODUCCIÓN 
 
-.
+En este capítulo se introduce el Trabajo Práctico que consiste en el desarrollo de una base de datos para el sistema de gestión de un hotel, la cual gestionará la administración tanto de reserva de habitaciones, su estado y el control de sus empleados. A continuación, se describen el tema, el problema a investigar y los objetivos de la tarea.
 
 ### Tema 
 
-. 
+El tema de este trabajo se enfoca en el diseño e implementación de una base de datos para la gestión de un hotel, una aplicación destinada al control correspondiente de las actividades de un hotel. La base de datos debe ser robusta y estar optimizada para mantener la integridad de los datos y preservar su privacidad. Este sistema debe registrar, almacenar y gestionar datos relacionados con clientes, usuarios, reservas y sus respectivos pagos.
 
 ### Planteamiento del Problema 
 
-.
+El principal problema que se abordará es la ausencia de una base de datos centralizada y estructurada que permita la gestión eficiente de información en el sistema. Actualmente, la hotel opera sin un sistema unificado para almacenar y manejar datos críticos, lo que puede resultar en inconsistencias, pérdidas de información, y dificultades en la gestión de las reservas. Este trabajo plantea las siguientes preguntas: ¿Cómo puede una base de datos relacional optimizar la administración de reservas, clientes, habitaciones y usuarios en un sistema de gestion de hotel? y ¿Qué estructuras de datos y relaciones son más adecuadas para asegurar la integridad y seguridad de la información en este contexto?
 
 ### Objetivos del Trabajo 
 
-.
+El objetivo principal del Trabajo Práctico es desarrollar una base de datos que permita al sisteme del hotel gestionar sus reservas, clientes, habitaciones y usuarios de manera eficiente y segura, mejorando así los procesos operativos del hotel.
 
 #### Objetivos Generales
 
-.
+Diseñar e implementar una base de datos relacional que soporte la aplicación de escritorio del sistema hotelero, optimizando el almacenamiento y la gestión de la información relacionada con reservas, clientes, usuarios y habitaciones.
 
 #### Objetivos Específicos 
  
-.
+- Definir las entidades clave del sistema, como reservas, usuarios, clientes y habitaciones, y sus respectivas relaciones.
+- Implementar tablas que permitan realizar operaciones CRUD (Crear, Leer, Actualizar y Eliminar) de manera eficiente, garantizando la consistencia de los datos.
+- Crear mecanismos de seguridad, como encriptación de contraseñas y restricciones de acceso, para proteger la información sensible.
+- Implementar validaciones y triggers que aseguren la integridad referencial entre las distintas tablas (reservas, clientes, habitaciones, usuarios).
 
 ## Capítulo II: MARCO CONCEPTUAL
 
@@ -80,6 +83,58 @@
 ### Modelo Relacional 
 
 ![Modelo Relacional IMG](https://github.com/Renata281/Proyecto-BD-Grupo8/blob/b3fc33d9773402642fc2b9b344095664ffa4c137/Modelo_Relacional_Grupo_8.png)
+
+### Diccionario de Datos
+
+### Características de la Tabla: Cliente
+- **Nombre**: Cliente
+- **Módulo**: Cliente
+- **Descripción**: Tabla para almacenar los datos del cliente.
+
+### Características de los Datos
+| Campo           | Tipo   | Long | Significado                               |
+|-----------------|--------|------|-------------------------------------------|
+| id_cliente	  | INT    |      | Indica el número del cliente              |
+| nombre          | VARCHAR|  50  | Indica el nombre del cliente			  |
+| apellido        | VARCHAR|  50  | Indica el apellido del cliente 			  |
+| telefono        | BIGINT |      | Indica la telefono del cliente 			  |
+| email		      | VARCHAR| 100  | Indica el email del cliente 			  |
+| DNI             | INT    |      | DNI de un cliente 			  			  |
+
+#### Restricciones
+| Campo           | Tipo restricción |
+|-----------------|------------------|
+| id_cliente      | PRIMARY KEY       |
+
+---
+
+### Características de la Tabla: detalle_reserva
+- **Nombre**: detalle_reserva
+- **Módulo**: detalle_reserva
+- **Descripción**: Tabla que almacena el detalle de cada reserva.
+
+### Características de los Datos
+| Campo           | Tipo     | Long | Significado                 |
+|-----------------|----------|------|-----------------------------|
+| nro_reserva 	  | INT      |      | Código de la reserva        |
+| id_cliente      | INT      |      | Código del cliente          |
+| fecha_ingreso   | DATE     |      | Fecha de ingreso            |
+| fecha_salida    | DATE     |      | Fecha de salida			  |
+
+#### Restricciones
+| Campo           | Tipo restricción |
+|-----------------|------------------|
+| nro_reserva     | PRIMARY KEY      |
+| id_cliente      | PRIMARY KEY      |
+| fechas 	      | CHECK	         |
+
+#### Claves Foráneas
+| Campo 	   | Entidad asociada |
+|--------------|------------------|
+| nro_reserva  | reserva         |
+| id_cliente   | cliente         |
+
+---
 
 ## Capítulo V: CONCLUSIONES 
 . 
