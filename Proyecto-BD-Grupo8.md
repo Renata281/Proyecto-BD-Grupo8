@@ -36,23 +36,9 @@
     
 [Capítulo II: Marco Conceptual](#capítulo-ii-marco-conceptual)
 
-    - Manejo de permisos a nivel de usuarios de base de datos
-    - Procedimientos y funciones almacenadas
-    - Optimización de consultas a través de índices
-    - Vistas y vistas indexadas
-
 [Capítulo III: Metodología Seguida](#capítulo-iii-metodología-seguida)
 
 [Capítulo IV: Desarrollo del Tema / Presentación de Resultados](#capítulo-iv-desarrollo-del-tema--presentación-de-resultados)
-
-    - Modelo Relacional
-    - Diccionario de Datos
-    - Modelo Físico
-    - Lote de datos
-    - Manejo de permisos a nivel de usuarios de base de datos
-    - Procedimientos y funciones almacenadas
-    - Optimización de consultas a través de índices
-    - Vistas y vistas indexadas
     
 [Capítulo V: Conclusiones](#capítulo-v-conclusiones)
 
