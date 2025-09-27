@@ -134,6 +134,66 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación d
 | nro_reserva  | reserva         |
 | id_cliente   | cliente         |
 
+### Características de la Tabla: reserva
+- **Nombre**: reserva
+- **Módulo**: reserva
+- **Descripción**: Tabla que almacena la informacion de la reserva.
+
+### Características de los Datos
+| Campo           | Tipo     | Long | Significado                 |
+|-----------------|----------|------|-----------------------------|
+| nro_reserva 	  | INT      |      | Número de la reserva        |
+| monto_total     | FLOAT    |      | Monto total de la reserva   |
+| nro_habitacion  | INT      |      | Número de la habitacion     |
+| id_piso         | INT      |      | Código del piso			  |
+| id_pago         | INT      |      | Código del pago             |
+| id_usuario      | INT      |      | Código del usuario	      |
+
+#### Restricciones
+| Campo           | Tipo restricción |
+|-----------------|------------------|
+| nro_reserva     | PRIMARY KEY      |
+
+
+#### Claves Foráneas
+| Campo 	    | Entidad asociada |
+|-------------- |------------------|
+| nro_habitacion| habitacion       |
+| id_piso       | habitacion       |
+| id_pago       | forma_pago       |
+| id_usuario    | usuario          |
+
+
+### Características de la Tabla: usuario
+- **Nombre**: usuario
+- **Módulo**: usuario
+- **Descripción**: Tabla que almacena la informacion del usuario.
+
+### Características de los Datos
+| Campo           | Tipo     | Long | Significado                   |
+|-----------------|----------|------|-------------------------------|
+| id_usuario 	  | INT      |      | Indica el número del usuario  |         
+| nombre          | VARCHAR  |  50  | Indica el nombre del usuario  |
+| apellido        | VARCHAR  |  50  | Indica el apellido del usuario|    
+| dni             | INT      |      | DNI del uduario      		    |
+| telefono        | BIGINT   |      | Telefono del usuario          |
+| email           | VARCHAR  | 100  | Email del usuario  	        |
+| password        | VARCHAR  |  10  | Contraseña del usuario        |
+| id_cargo        | INT      |      | Código del cargo      	    |
+
+#### Restricciones
+| Campo           | Tipo restricción |
+|-----------------|------------------|
+| id_usuario      | PRIMARY KEY      |
+
+
+#### Claves Foráneas
+| Campo 	    | Entidad asociada |
+|-------------- |------------------|
+| id_cargo      | cargo            |
+
+
+
 ---
 
 ## Capítulo V: CONCLUSIONES 
