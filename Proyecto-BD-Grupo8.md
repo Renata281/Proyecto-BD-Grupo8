@@ -154,7 +154,6 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación d
 |-----------------|------------------|
 | nro_reserva     | PRIMARY KEY      |
 
-
 #### Claves Foráneas
 | Campo 	    | Entidad asociada |
 |-------------- |------------------|
@@ -162,7 +161,6 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación d
 | id_piso       | habitacion       |
 | id_pago       | forma_pago       |
 | id_usuario    | usuario          |
-
 
 ### Características de la Tabla: usuario
 - **Nombre**: usuario
@@ -192,7 +190,49 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación d
 |-------------- |------------------|
 | id_cargo      | cargo            |
 
+### Características de la Tabla: habitacion
+- **Nombre**: habitacion
+- **Módulo**: habitacion
+- **Descripción**: Tabla que almacena la informacion de la habitacion.
 
+### Características de los Datos
+| Campo           | Tipo     | Long | Significado                   |
+|-----------------|----------|------|-------------------------------|
+| nro_habitacion  | INT      |      | Número de habitación  		|         
+| id_piso	 	  | INT		 |      | Piso de la habitación 		|
+| cant_cama       | INT		 |      | Indica la cantidad de camas   |    
+| precio_unitario | FLOAT    |      | Precio de la habitación		|
+| descripcion     | VARCHAR  | 200  | Descripcion de la habitación  |
+| id_tipo         | INT		 |      | Tipo de habitación 	        |
+| id_estado       | INT      |      | Estado de la habitación	    |
+
+#### Restricciones
+| Campo           | Tipo restricción |
+|-----------------|------------------|
+| nro_habitacion  | PRIMARY KEY      |
+| id_piso         | PRIMARY KEY      |
+
+#### Claves Foráneas
+| Campo 	    | Entidad asociada |
+|-------------- |------------------|
+| id_tipo       | tipo_habitacion  |
+| id_estado     | estado_habitacion|
+
+### Características de la Tabla: Piso
+- **Nombre**: Piso
+- **Módulo**: Piso
+- **Descripción**: Tabla para almacenar los datos del Piso.
+
+### Características de los Datos
+| Campo           | Tipo   | Long | Significado                               |
+|-----------------|--------|------|-------------------------------------------|
+| id_piso 		  | INT    |      | Indica el número del piso	              |
+| descripcion     | VARCHAR|  100 | Indica la descripción del piso			  |
+
+#### Restricciones
+| Campo           | Tipo restricción |
+|-----------------|------------------|
+| id_piso      | PRIMARY KEY       |
 
 ---
 
