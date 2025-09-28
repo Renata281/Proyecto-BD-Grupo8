@@ -271,6 +271,40 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación d
 |-----------------|------------------|
 | id_cargo       | PRIMARY KEY       |
 
+### Características de la Tabla:  tipo_habitacion
+- **Nombre**: tipo_habitacion
+- **Módulo**: tipo_habitacion
+- **Descripción**: Tabla que almacena información del tipo de habitación
+
+### Características de los Datos
+| Campo           | Tipo   | Long | Significado                               |
+|-----------------|--------|------|-------------------------------------------|
+| id_tipo		  | INT    |      | numero de tipo de habitación              |
+| descripcion     | VARCHAR|  50  | descripción del tipo de habitación		  |
+
+
+#### Restricciones
+| Campo           | Tipo restricción |
+|-----------------|------------------|
+| id_tipo         | PRIMARY KEY      |
+
+### Características de la Tabla: estado_habitacion
+- **Nombre**: estado_habitacion
+- **Módulo**: estado_habitacion
+- **Descripción**: Tabla que almacena información del estado de la habitación
+
+### Características de los Datos
+| Campo           | Tipo   | Long | Significado                               |
+|-----------------|--------|------|-------------------------------------------|
+| id_estado		  | INT    |      | número de estado			              |
+| descripcion     | VARCHAR|  50  | descripción del estado de la habitación	  |
+
+
+#### Restricciones
+| Campo           | Tipo restricción |
+|-----------------|------------------|
+| id_tipo         | PRIMARY KEY      |
+
 
 ---
 
