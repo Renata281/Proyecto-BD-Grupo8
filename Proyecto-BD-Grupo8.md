@@ -236,6 +236,42 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación d
 
 ---
 
+### Características de la Tabla: forma_pago
+- **Nombre**: forma_pago
+- **Módulo**: forma_pago
+- **Descripción**: Tabla para almacenar los datos de las distintas formas de pago.
+
+### Características de los Datos
+| Campo           | Tipo   | Long | Significado                               |
+|-----------------|--------|------|-------------------------------------------|
+| id_pago 		  | INT    |      | Indica el número del pago	              |
+| descripcion     | VARCHAR|  100 | Indica el nombre de la forma de pago      |
+
+#### Restricciones
+| Campo           | Tipo restricción |
+|-----------------|------------------|
+| id_pago      | PRIMARY KEY       |
+
+---
+### Características de la Tabla: cargo
+- **Nombre**: cargo
+- **Módulo**: cargo
+- **Descripción**: Tabla para almacenar los datos de los distintos cargos.
+
+### Características de los Datos
+| Campo           | Tipo   | Long | Significado                               |
+|-----------------|--------|------|-------------------------------------------|
+| id_cargo		  | INT    |      | Indica el número del cargo	              |
+| descripcion     | VARCHAR|  100 | Indica el nombre del cargo                |
+
+#### Restricciones
+| Campo           | Tipo restricción |
+|-----------------|------------------|
+| id_cargo       | PRIMARY KEY       |
+
+
+---
+
 ## Capítulo V: CONCLUSIONES 
 . 
 
