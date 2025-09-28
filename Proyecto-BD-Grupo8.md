@@ -106,7 +106,6 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación d
 |-----------------|------------------|
 | id_cliente      | PRIMARY KEY       |
 
----
 
 ### Características de la Tabla: detalle_reserva
 - **Nombre**: detalle_reserva
@@ -133,6 +132,7 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación d
 |--------------|------------------|
 | nro_reserva  | reserva         |
 | id_cliente   | cliente         |
+
 
 ### Características de la Tabla: reserva
 - **Nombre**: reserva
@@ -162,6 +162,7 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación d
 | id_pago       | forma_pago       |
 | id_usuario    | usuario          |
 
+
 ### Características de la Tabla: usuario
 - **Nombre**: usuario
 - **Módulo**: usuario
@@ -189,6 +190,7 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación d
 | Campo 	    | Entidad asociada |
 |-------------- |------------------|
 | id_cargo      | cargo            |
+
 
 ### Características de la Tabla: habitacion
 - **Nombre**: habitacion
@@ -218,6 +220,7 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación d
 | id_tipo       | tipo_habitacion  |
 | id_estado     | estado_habitacion|
 
+
 ### Características de la Tabla: Piso
 - **Nombre**: Piso
 - **Módulo**: Piso
@@ -232,9 +235,8 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación d
 #### Restricciones
 | Campo           | Tipo restricción |
 |-----------------|------------------|
-| id_piso      | PRIMARY KEY       |
+| id_piso         | PRIMARY KEY      |
 
----
 
 ### Características de la Tabla: forma_pago
 - **Nombre**: forma_pago
@@ -252,7 +254,7 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación d
 |-----------------|------------------|
 | id_pago      | PRIMARY KEY       |
 
----
+
 ### Características de la Tabla: cargo
 - **Nombre**: cargo
 - **Módulo**: cargo
