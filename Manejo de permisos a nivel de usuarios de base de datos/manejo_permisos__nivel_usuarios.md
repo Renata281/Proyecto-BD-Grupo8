@@ -1,4 +1,4 @@
-##Manejo de permisos a nivel de usuarios de base de datos
+## Manejo de permisos a nivel de usuarios de base de datos
 
 En la administración de bases de datos, es fundamental garantizar la seguridad y el control de acceso a los datos. Para lograrlo, es necesario establecer una gestión rigurosa de permisos y roles, lo cual permita definir y limitar el acceso de los usuarios de manera adecuada. Estos permisos se gestionan a nivel de servidor mediante inicios de sesión y roles de servidor, ya nivel de base de datos a través de usuarios y roles específicos de la base de datos. Esta estructura de permisos proporciona una capa de protección integral que asegura la integridad y confidencialidad de los datos dentro del sistema.
 
