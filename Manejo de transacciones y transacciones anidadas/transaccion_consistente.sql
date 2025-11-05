@@ -22,12 +22,12 @@ BEGIN TRY
 
 
  COMMIT TRANSACTION;
-    PRINT '✅ Transacción completada correctamente.';
+    PRINT 'Transacción completada correctamente.';
 END TRY
 
 BEGIN CATCH
     ROLLBACK TRANSACTION;
-    PRINT '❌ Error en la transacción. Se han revertido todos los cambios.';
+    PRINT 'Error en la transacción. Se han revertido todos los cambios.';
     PRINT ERROR_MESSAGE();
 END CATCH;
 
@@ -52,12 +52,12 @@ BEGIN TRY
     WHERE nro_habitacion = 999 AND id_piso = 9;
 
     COMMIT TRANSACTION;
-    PRINT '✅ Transacción completada correctamente.';
+    PRINT 'Transacción completada correctamente.';
 END TRY
 
 BEGIN CATCH
     ROLLBACK TRANSACTION;
-    PRINT '❌ Error intencional detectado. Transacción revertida.';
+    PRINT 'Error intencional detectado. Transacción revertida.';
     PRINT ERROR_MESSAGE();
 END CATCH;
 
