@@ -308,6 +308,58 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación d
 
 ---
 
+
+## Uso de Índices
+
+
+A fines prácticos, para lograr obtener una mejor comprensión sobre el uso de índices y su impacto en las consultas, se insertó 500,000 registros sobre la tabla de reserva. Posteriormente se realizó una consulta para obtener las reservas del primer trimestre de 2024 (WHERE fecha_ingreso BETWEEN '2024-01-01' AND '2024-03-31') y se comparó los resultados.
+
+Se analizaron tres escenarios:
+
+1-Cuando la tabla posee su índice agrupado por defecto en nro_reserva (no útil para la consulta de fecha).
+
+2-Cuando se define un índice agrupado sobre el campo de la fecha.
+
+3-Cuando se define un índice agrupado sobre la fecha que además incluye otras columnas.
+
+Los resultados fueron los siguientes:
+
+1. Consulta sin índice agrupado sobre la columna fecha
+Plan de ejecución y tiempos de respuesta:
+
+(24912 filas afectadas)
+Table 'reserva'. Scan count 1, logical reads 2729, physical reads 0, page server reads 0, read-ahead reads 2662, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+
+SQL Server Execution Times:
+CPU time = 94 ms,  elapsed time = 966 ms.
+
+2. Consulta con el índice agrupado solo sobre la columna fecha
+Plan de ejecución y tiempos de respuesta:
+
+(24912 filas afectadas)
+Table 'reserva'. Scan count 1, logical reads 168, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+
+SQL Server Execution Times:
+CPU time = 31 ms,  elapsed time = 832 ms.
+
+3. Consulta sobre el índice agrupado incluyendo varias columnas 
+Plan de ejecución y tiempos de respuesta:
+
+(24912 filas afectadas)
+Table 'reserva'. Scan count 1, logical reads 144, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+
+SQL Server Execution Times:
+CPU time = 31 ms,  elapsed time = 733 ms.
+
+Conclusiones
+
+En base a los resultados obtenidos, nos dimos cuenta que la creación de un índice agrupado en la columna fecha_ingreso redujo significativamente el número de lecturas lógicas necesarias para la consulta, pasando de 2729 lecturas a 168.
+
+Por otro lado, la inclusión de otras columnas en un índice agrupado adicional (Prueba 3) optimizó aún más el acceso a los datos que se estaban buscando, reduciendo las lecturas lógicas a 144.
+
+Además, se observó una mejora drástica en el tiempo de CPU después de agregar los índices, bajando de 94 ms a 31 ms en la primera prueba con el índice agrupado simple. El índice agrupado extendido (compuesto) mostró un tiempo de CPU idéntico de 31 ms y un tiempo transcurrido total ligeramente menor, demostrando ser marginalmente más eficiente en E/S (IO) para esta consulta.
+
+
 ## Capítulo V: CONCLUSIONES 
 . 
 
