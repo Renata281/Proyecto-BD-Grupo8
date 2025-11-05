@@ -44,6 +44,43 @@ Sin embargo, el programador sigue siendo responsable de cerrarla con COMMIT o RO
 Se usan en sesiones con MARS (Multiple Active Result Sets).
 Permiten que varias transacciones se gestionen en paralelo dentro del mismo lote de instrucciones.
 
+*Instrucciones de transacción en SQL Server
+-BEGIN TRANSACTION o BEGIN TRAN: Marca el inicio de una transacción.
+-ROLLBACK TRANSACTION o ROLLBACK TRAN: Revierte la transacción en caso de error o para abandonarla.
+-COMMIT TRANSACTION o COMMIT TRAN: Confirma el conjunto de operaciones, haciendo los datos definitivos.
+
+¿Qué es una transacción anidada?
+
+Una transacción anidada se refiere a una transacción que se ejecuta dentro de otra transacción principal que ya está activa. Es decir, se inicia una nueva transacción mientras otra aún no ha finalizado. En sistemas como SQL Server, cuando se utiliza el comando BEGIN TRANSACTION mientras hay una transacción en curso, lo que realmente ocurre es la creación de una transacción anidada.
+
+Este tipo de transacciones resultan muy útiles en procesos complejos donde se realizan múltiples operaciones sobre la base de datos que dependen entre sí. Permiten dividir una tarea grande en partes más pequeñas, cada una con su propio control lógico, facilitando el manejo de errores y la organización del código.
+
+Sin embargo, es importante aclarar que SQL Server no implementa de forma completa las transacciones anidadas reales. En la práctica, solo la transacción más externa tiene el control total sobre los comandos COMMIT o ROLLBACK. Si dentro de una transacción interna se ejecuta un ROLLBACK, el sistema deshará todas las operaciones realizadas desde el primer BEGIN TRANSACTION, es decir, se revierte toda la transacción, no solo la parte interna.
+
+Este comportamiento puede generar confusión, ya que da la impresión de que cada transacción interna es independiente, cuando en realidad todas las transacciones anidadas forman parte de un mismo contexto. Por eso, al trabajar con transacciones anidadas es recomendable llevar un control cuidadoso de los niveles de transacción y de los puntos de confirmación (SAVEPOINT) para evitar la pérdida total de los cambios en caso de errores.
+
+Ventajas de las transacciones:
+
+1-Atomicidad
+La atomicidad significa que todas las operaciones que forman parte de una transacción se ejecutan por completo o no se ejecuta ninguna. En otras palabras, si algo falla en el proceso, la base de datos vuelve al estado original, como si nada hubiera pasado. Esto garantiza que los datos no queden a medio modificar ni se generen inconsistencias.
+
+2-Consistencia
+Este principio asegura que la base de datos siempre cumpla con todas las reglas y restricciones que tiene definidas. Cada transacción debe llevar la base de datos de un estado válido a otro también válido, manteniendo siempre la coherencia de los datos.
+
+3-Aislamiento
+El aislamiento permite que varias transacciones se ejecuten al mismo tiempo sin interferir entre sí. Así, cada una trabaja de forma independiente, evitando conflictos o errores cuando muchas personas o procesos acceden a la base de datos al mismo tiempo.
+
+4-Durabilidad
+Una vez que una transacción se confirma con un COMMIT, los cambios quedan guardados de manera permanente. Incluso si el sistema se apaga o falla después, los datos no se pierden. Esto hace que el sistema sea más confiable y seguro.
+
+5-Manejo de errores y recuperación
+Las transacciones también ayudan a manejar errores de forma más controlada. Si ocurre algún problema durante una operación, todo lo que se haya hecho hasta ese momento se revierte automáticamente, evitando que queden datos incorrectos o incompletos.
+
+6-Mejora en la concurrencia y eficiencia
+Permiten que varios usuarios trabajen al mismo tiempo sobre la base de datos sin causar bloqueos o conflictos. Gracias a esto, el sistema funciona de manera más fluida y con mejor rendimiento.
+
+7-Seguridad y control en los cambios de datos
+Por último, las transacciones aportan una capa extra de seguridad. Los cambios solo se aplican cuando la transacción se confirma (con el COMMIT), lo que evita modificaciones no deseadas y protege la información, especialmente cuando se trata de datos sensibles.
 
 
 
