@@ -1,4 +1,4 @@
-## Vistas y vistas Indexadas
+## Optimización de consultas a través de índices
 
 Los índices son esenciales para agilizar el rendimiento de las consultas en bases de datos. Sin un índice, el motor de la base de datos debe revisar la tabla por completo 
 (un "full table scan") para encontrar un valor, un proceso muy ineficiente en tablas de gran volumen. Los índices funcionan como un directorio o puntero que permite localizar 
