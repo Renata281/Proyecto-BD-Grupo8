@@ -351,8 +351,6 @@ Table 'reserva'. Scan count 1, logical reads 144, physical reads 0, page server 
 SQL Server Execution Times:
 CPU time = 31 ms,  elapsed time = 733 ms.
 
-Conclusiones
-
 En base a los resultados obtenidos, nos dimos cuenta que la creación de un índice agrupado en la columna fecha_ingreso redujo significativamente el número de lecturas lógicas necesarias para la consulta, pasando de 2729 lecturas a 168.
 
 Por otro lado, la inclusión de otras columnas en un índice agrupado adicional (Prueba 3) optimizó aún más el acceso a los datos que se estaban buscando, reduciendo las lecturas lógicas a 144.
