@@ -81,7 +81,14 @@ SET STATISTICS IO ON;
 
 SELECT * FROM reserva
 WHERE fecha_ingreso BETWEEN '2022-01-01' AND '2022-12-31';
+/*
+Plan de ejecucion y tiempos de respuesta:
+(30395 filas afectadas)
+Table 'reserva'. Scan count 1, logical reads 1669, physical reads 0, page server reads 0, read-ahead reads 1544, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
 
+SQL Server Execution Times:
+   CPU time = 47 ms,  elapsed time = 1023 ms.
+*/
 -------------------------------------- 3. Creación del indice ----------------------------------------------
 
 --- Creando Índice Agrupado en fecha_ingreso ---';
@@ -106,6 +113,15 @@ WHERE fecha_ingreso BETWEEN '2022-01-01' AND '2022-12-31';
 
 SET STATISTICS TIME OFF;
 SET STATISTICS IO OFF;
+
+/*
+Plan de ejecucion y tiempos de respuesta:
+(30395 filas afectadas)
+Table 'reserva'. Scan count 1, logical reads 203, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+
+SQL Server Execution Times:
+   CPU time = 16 ms,  elapsed time = 1235 ms.
+*/
 
 -------------------------------------- 4. Eliminación el indice ----------------------------------------------
 DROP INDEX [IX_reserva_fecha_ingreso] ON reserva;
@@ -145,6 +161,14 @@ WHERE fecha_ingreso BETWEEN '2022-01-01' AND '2022-12-31';
 
 SET STATISTICS TIME OFF;
 SET STATISTICS IO OFF;
+/*
 
+Plan de ejecucion y tiempos de respuesta:
+(30395 filas afectadas)
+Table 'reserva'. Scan count 1, logical reads 175, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+
+SQL Server Execution Times:
+   CPU time = 31 ms,  elapsed time = 1237 ms.
+*/
 
 ```
