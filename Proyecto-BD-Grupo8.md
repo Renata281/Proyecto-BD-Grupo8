@@ -75,33 +75,24 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación d
 ### Manejo de permisos a nivel de usuarios de base de datos
 
 En el contexto de la gestión de bases de datos, resulta esencial asegurar la protección y el dominio sobre el acceso a la información contenida. Con este fin, se requiere instituir una administración estricta de roles y permisos , que posibilite determinar y acotar de forma precisa las capacidades de los usuarios.
-
 Estos privilegios se articulan en dos planos operativos:
-
-A escala del servidor , mediante el uso de credenciales de ingreso (inicios de sesión) y funciones de servidor (roles de servidor) .
-
-A escala de la base de datos , a través de identidades de usuario y agrupaciones de permisos específicos (roles de base de datos) .
+- A escala del servidor , mediante el uso de credenciales de ingreso (inicios de sesión) y funciones de servidor (roles de servidor) .
+- A escala de la base de datos , a través de identidades de usuario y agrupaciones de permisos específicos (roles de base de datos) .
 
 Esta arquitectura de permisos establece una barrera protectora completa que resguarda la fidelidad y el secreto de los datos alojados en el sistema.
 
 Identidades de Usuario y Autenticación en la Base de Datos: 
 El acceso a una base de datos se inicia con un inicio de sesión que autoriza la conexión al servidor. Una vez autenticado, se debe crear una identidad de usuario dentro de la base de datos y vincularla a ese inicio de sesión.
-
-Habitualmente, el identificador del usuario en la base de datos coincide con el inicio de sesión, aunque esta concordancia no es obligatoria .
-
-Cada usuario de una base de datos mantiene una asociación única con un inicio de sesión.
-
-No obstante, un mismo inicio de sesión puede estar vinculado a una identidad de usuario en varias bases de datos , permitiendo la interacción con todas ellas.
-
-También existe la posibilidad de generar identidades de usuario que no dependen de un inicio de sesión a nivel de servidor. A estos se les denomina usuarios de bases de datos autónomas o independientes.
+- Habitualmente, el identificador del usuario en la base de datos coincide con el inicio de sesión, aunque esta concordancia no es obligatoria .
+- Cada usuario de una base de datos mantiene una asociación única con un inicio de sesión.
+- No obstante, un mismo inicio de sesión puede estar vinculado a una identidad de usuario en varias bases de datos , permitiendo la interacción con todas ellas.
+- También existe la posibilidad de generar identidades de usuario que no dependen de un inicio de sesión a nivel de servidor. A estos se les denomina usuarios de bases de datos autónomas o independientes.
 
 La Función de los Roles en la Administración de Permisos: 
 Los roles son mecanismos que agrupan de manera lógica conjuntos de permisos, optimizando el proceso de administración.
-
-Roles Predefinidos (Fijos) de Base de Datos
+- Roles Predefinidos (Fijos) de Base de Datos: 
 Son agrupaciones de permisos ya configuradas y de utilidad general a nivel de base de datos. Es factible integrar en estos roles tanto identidades de usuario individuales como otros roles personalizados, utilizando para ello el comando ALTER ROLE... ADD MEMBER.
-
-Roles de Base de Datos Creados por el Usuario (Personalizados)
+- Roles de Base de Datos Creados por el Usuario (Personalizados): 
 Aquellos usuarios que poseen la potestad para crear roles tienen la capacidad de establecer nuevos roles para clasificar a los usuarios en función de los privilegios que comparten . Este método simplifica la gestión de accesos, ya que facilita la concesión o supresión de permisos a todo un conjunto de usuarios con una sola operación sobre el rol, en lugar de realizar cambios individuales.
 
 
