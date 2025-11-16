@@ -586,8 +586,95 @@ Las funciones desarrolladas fueron diseñadas para optimizar principalmente el p
   ```
 
 #### 3. Resultados de las Pruebas de Rendimiento
+Para comprobar el rendimiendo general se utilizó el siguiente script de prueba para comparar el tiempo de ejecución de un insert simple y del procedimiento de reservar_habitación.
 
+´´´sql
 
+	-------------------------------------------------------------------
+	-- PRUEBA DE EFICIENCIA
+	-------------------------------------------------------------------
+	
+	-- Mide el tiempo de la consulta directa
+	PRINT '--- INICIANDO PRUEBA: CONSULTA DIRECTA ---';
+	SET STATISTICS TIME ON;
+	
+	--  Insert básico
+	INSERT INTO reserva(
+	    fecha_ingreso, fecha_salida, monto_total, id_cliente,
+	    nro_habitacion, id_piso, id_pago
+	)
+	VALUES(
+	    '2026-01-10', '2026-01-12', 37000.00, 2, 102, 1, 1
+	);
+	
+	SET STATISTICS TIME OFF;
+	PRINT '--- FIN PRUEBA: CONSULTA DIRECTA ---';
+	GO
+	
+	
+	-- Mide el tiempo del procedimiento
+	PRINT '--- INICIANDO PRUEBA: PROCEDIMIENTO ALMACENADO ---';
+	SET STATISTICS TIME ON;
+	
+	-- Insert mediante el procedimiento almacenado
+	EXEC reservar_habitacion
+	    @fecha_ingreso = '2026-01-10',
+	    @fecha_salida = '2026-01-12',
+	    @dni_cliente = 38193339,  
+	    @nro_habitacion = 201, 
+	    @nro_piso = 2,
+	    @id_pago = 4;         
+	
+	SET STATISTICS TIME OFF;
+	PRINT '--- FIN PRUEBA: PROCEDIMIENTO ALMACENADO ---';
+	GO
+´´´
+Luego de ejecutar ese script, se obtuvo el siguiente mensaje de salida:
+
+--- INICIANDO PRUEBA: CONSULTA DIRECTA ---
+SQL Server parse and compile time: 
+   CPU time = 0 ms, elapsed time = 0 ms.
+
+ SQL Server Execution Times:
+   CPU time = 0 ms,  elapsed time = 0 ms.
+
+--- FIN PRUEBA: CONSULTA DIRECTA ---
+--- INICIANDO PRUEBA: PROCEDIMIENTO ALMACENADO ---
+SQL Server parse and compile time: 
+   CPU time = 0 ms, elapsed time = 11 ms.
+
+ SQL Server Execution Times:
+   CPU time = 15 ms,  elapsed time = 10 ms.
+
+ SQL Server Execution Times:
+   CPU time = 0 ms,  elapsed time = 0 ms.
+
+ SQL Server Execution Times:
+   CPU time = 16 ms,  elapsed time = 24 ms.
+
+ SQL Server Execution Times:
+   CPU time = 15 ms,  elapsed time = 17 ms.
+
+ SQL Server Execution Times:
+   CPU time = 0 ms,  elapsed time = 0 ms.
+
+ SQL Server Execution Times:
+   CPU time = 0 ms,  elapsed time = 3 ms.
+
+SQL Server parse and compile time: 
+   CPU time = 0 ms, elapsed time = 11 ms.
+
+ SQL Server Execution Times:
+   CPU time = 0 ms,  elapsed time = 0 ms.
+
+ SQL Server Execution Times:
+   CPU time = 0 ms,  elapsed time = 13 ms.
+
+ SQL Server Execution Times:
+   CPU time = 46 ms,  elapsed time = 81 ms.
+--- FIN PRUEBA: PROCEDIMIENTO ALMACENADO ---
+
+A simple vista se puede ver como el tiempo de ejecución de la insersión básica es ampliamente menor al del procedimiento, esto no significa que sea más eficaz. La desventaja que tiene el script basico de insert respecto al procedimiento es su confiabilidad, puesto que no realiza validaciones ni contempla casos como los que sería el reservar la misma habitación en las mismas fechas para distintos clientes como lo hace el segundo método. Por lo que se puede decir que en cuanto a eficiencia es mejor el procedimiento almacenado a pesar de que ocupe más tiempo de ejecución, ya que es un método que contempla cada caso posible y evita inconsistencias.
 
 ## Uso de Índices
 
