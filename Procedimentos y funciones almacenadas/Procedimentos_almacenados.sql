@@ -11,7 +11,7 @@ create procedure reservar_habitacion
 as
 begin
 	declare @cliente int;
-	set @cliente = buscar_id_cliente(@dni_cliente);
+	set @cliente = dbo.buscar_id_cliente(@dni_cliente);
 
 	if @cliente is null
 	begin 
@@ -20,10 +20,10 @@ begin
 	end
 
 	declare @esta_ocupada bit;
-	set @esta_ocupada = habitacion_disponible(@nro_habitacion, @nro_piso, @fecha_ingreso, @fecha_salida);
+	set @esta_ocupada = dbo.habitacion_disponible(@nro_habitacion, @nro_piso, @fecha_ingreso, @fecha_salida);
 
 	declare @monto_total decimal(18,2);
-	set @monto_total = calcular_monto(@nro_habitacion, @nro_piso, @fecha_ingreso, @fecha_salida);
+	set @monto_total = dbo.calcular_monto(@nro_habitacion, @nro_piso, @fecha_ingreso, @fecha_salida);
 
 	if @esta_ocupada = 1
 	begin
@@ -50,7 +50,7 @@ begin
 		@id_pago
 		);
 
-		exec cambiar_estado_habitacion
+		exec dbo.cambiar_estado_habitacion
 			@nro_habitacion = @nro_habitacion,
 			@id_piso = @nro_piso,
 			@nuevo_estado = 2
