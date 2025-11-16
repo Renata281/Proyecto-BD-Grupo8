@@ -137,8 +137,7 @@ Los procedimientos almacenados forman parte de las metodologías esenciales en e
 
 Las funciones almacenadas en cambio, representan una metodología mas inclinada hacia el cálculo y consulta de datos específicos. Éstas no modifican los datos, en cambio, se recurre a ellas para realizar cálculos derivados, como obtener totales, promedios o formatos específicos, y retornar un único valor. Esta metodología permite una integración sencilla de operaciones matemáticas o de transformación en consultas, facilitando la obtención de información sin alterar los datos base. Las funciones almacenadas son especialmente útiles para estandarizar estos cálculos en diferentes consultas y asegurar una coherencia en el tratamiento de la información.
 
-##Manejo de transacciones.
-## ¿Qué es una Unidad de Transacción?
+## Manejo de transacciones: ¿Qué es una Unidad de Transacción?
 
 Una UNAT o Unidad de Transacción es el conjunto de operaciones que se ejecutan como una unidad lógica e indivisible de trabajo dentro de una base de datos.
 Esto significa que todas las instrucciones que conforman la transacción deben completarse con éxito para que los cambios se confirmen (sean permanentes), o de lo contrario, se revierten para mantener la integridad de la información.
@@ -158,8 +157,7 @@ Cada transacción se ejecuta de manera independiente, sin afectar ni verse afect
 4-Durabilidad:
 Una vez confirmado el COMMIT, los cambios permanecen guardados incluso si ocurre una falla del sistema.
 
-##Manejo de transacción anidada:
-##¿Qué es una transacción anidada?
+## Manejo de transacción anidada: ¿Qué es una transacción anidada?
 
 Una transacción anidada se refiere a una transacción que se ejecuta dentro de otra transacción principal que ya está activa. Es decir, se inicia una nueva transacción mientras otra aún no ha finalizado. 
 En sistemas como SQL Server, cuando se utiliza el comando BEGIN TRANSACTION mientras hay una transacción en curso, lo que realmente ocurre es la creación de una transacción anidada.
