@@ -756,5 +756,9 @@ Además, se observó una mejora drástica en el tiempo de CPU después de agrega
 ## Capítulo V: CONCLUSIONES 
 Respecto al tema de procedimientos y funciones almacenadas podemos decir que, aunque en algunos casos no parezcan más eficientes que las consultas sencillas, nos permiten tener un código mucho mas limpio y seguro, permitiendonos asegurar la consistentencia del mismo y contemplar errores que una consulta sencilla no podría, ademas que al momento de ponerlos en practica tienen una estructura más sencilla que permite comprensión sobre lo que se está haciendo.
 
+Las transacciones y las transacciones anidadas: aseguran que los cambios en la base de datos se realicen de forma segura y coherente. La UNAT garantiza el principio “todo o nada” mediante las propiedades ACID, mientras que las transacciones anidadas permiten organizar procesos complejos, aunque siempre dependen del control final de la transacción principal.
+
+
+
 ## Capítulo VI: BIBLIOGRAFÍA 
 
