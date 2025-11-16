@@ -131,6 +131,11 @@ Existen diversos tipos de índices, cada uno con un propósito específico:
 
 En resumen, los índices deben aplicarse selectivamente para potenciar el rendimiento donde más se necesita, sin sobrecargar las operaciones diarias de la base de datos.
 
+### Procedimientos y funciones almacenados
+
+Los procedimientos almacenados forman parte de las metodologías esenciales en el diseño y administración de bases de datos, permitiendo un desarrollo organizado y manejo eficiente de los datos. Los procedimientos almacenados se utilizan como una metodología estructurada para ejecutar operaciones complejas y repetitivas, gestionando múltiples transacciones y asegurando la consistencia y seguridad de los datos. Esta metodología es ideal para operaciones que requieren la modificación de datos en diferentes tablas o la ejecución de procesos de negocio definidos, garantizando que se sigan los mismos pasos y lógica en cada ejecución.
+
+Las funciones almacenadas en cambio, representan una metodología mas inclinada hacia el cálculo y consulta de datos específicos. Éstas no modifican los datos, en cambio, se recurre a ellas para realizar cálculos derivados, como obtener totales, promedios o formatos específicos, y retornar un único valor. Esta metodología permite una integración sencilla de operaciones matemáticas o de transformación en consultas, facilitando la obtención de información sin alterar los datos base. Las funciones almacenadas son especialmente útiles para estandarizar estos cálculos en diferentes consultas y asegurar una coherencia en el tratamiento de la información.
 
 ## Capítulo III: METODOLOGÍA SEGUIDA
 
