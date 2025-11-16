@@ -1,4 +1,4 @@
-Manejo de transacciones y transacciones anidadas.
+Manejo de transacciones.
 
 ¿Qué es una UNAT (Unidad de Transacción)?
 
@@ -48,29 +48,6 @@ Permiten que varias transacciones se gestionen en paralelo dentro del mismo lote
 -BEGIN TRANSACTION o BEGIN TRAN: Marca el inicio de una transacción.
 -ROLLBACK TRANSACTION o ROLLBACK TRAN: Revierte la transacción en caso de error o para abandonarla.
 -COMMIT TRANSACTION o COMMIT TRAN: Confirma el conjunto de operaciones, haciendo los datos definitivos.
-
-Ventajas de las transacciones:
-
-1-Atomicidad
-La atomicidad significa que todas las operaciones que forman parte de una transacción se ejecutan por completo o no se ejecuta ninguna. En otras palabras, si algo falla en el proceso, la base de datos vuelve al estado original, como si nada hubiera pasado. Esto garantiza que los datos no queden a medio modificar ni se generen inconsistencias.
-
-2-Consistencia
-Este principio asegura que la base de datos siempre cumpla con todas las reglas y restricciones que tiene definidas. Cada transacción debe llevar la base de datos de un estado válido a otro también válido, manteniendo siempre la coherencia de los datos.
-
-3-Aislamiento
-El aislamiento permite que varias transacciones se ejecuten al mismo tiempo sin interferir entre sí. Así, cada una trabaja de forma independiente, evitando conflictos o errores cuando muchas personas o procesos acceden a la base de datos al mismo tiempo.
-
-4-Durabilidad
-Una vez que una transacción se confirma con un COMMIT, los cambios quedan guardados de manera permanente. Incluso si el sistema se apaga o falla después, los datos no se pierden. Esto hace que el sistema sea más confiable y seguro.
-
-5-Manejo de errores y recuperación
-Las transacciones también ayudan a manejar errores de forma más controlada. Si ocurre algún problema durante una operación, todo lo que se haya hecho hasta ese momento se revierte automáticamente, evitando que queden datos incorrectos o incompletos.
-
-6-Mejora en la concurrencia y eficiencia
-Permiten que varios usuarios trabajen al mismo tiempo sobre la base de datos sin causar bloqueos o conflictos. Gracias a esto, el sistema funciona de manera más fluida y con mejor rendimiento.
-
-7-Seguridad y control en los cambios de datos
-Por último, las transacciones aportan una capa extra de seguridad. Los cambios solo se aplican cuando la transacción se confirma (con el COMMIT), lo que evita modificaciones no deseadas y protege la información, especialmente cuando se trata de datos sensibles.
 
 
 
