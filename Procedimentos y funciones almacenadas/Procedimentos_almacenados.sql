@@ -1,4 +1,3 @@
-´´´SQL
 /*
 reserva una habitacion
 */
@@ -91,4 +90,3 @@ begin
 	where nro_reserva = @id_reserva
 end
 go
-´´´
