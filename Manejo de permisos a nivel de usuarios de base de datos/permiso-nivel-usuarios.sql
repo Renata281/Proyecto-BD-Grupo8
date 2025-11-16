@@ -43,7 +43,7 @@ end
 go
 
 /*
-devuelve 1 o 0 si la habitacion est· disponible o no entre un intervalo de fechas
+devuelve 1 o 0 si la habitacion est√° disponible o no entre un intervalo de fechas
 */
 create function habitacion_disponible
 (
@@ -182,7 +182,7 @@ end
 go
 
 
-/** 3-Al usuario con permiso de solo lectura, darle permiso de ejecuciÛn sobre este procedimiento
+/** 3-Al usuario con permiso de solo lectura, darle permiso de ejecuci√≥n sobre este procedimiento
 **/
 GRANT EXECUTE ON reservar_habitacion TO lector_hotel;
 
@@ -204,10 +204,10 @@ WHERE id_cliente = 1 AND fecha_ingreso = '20250110';
 INSERT INTO reserva(fecha_ingreso, fecha_salida, monto_total, id_cliente, nro_habitacion, id_piso, id_pago)
 VALUES ('2025-01-20','2025-01-22',7000,1,101,1,1);
 --No permite realizar el INSERT
---Imprime el mensaje: Se denegÛ el permiso INSERT en el objeto 'reserva', base de datos 'hoteleria', esquema 'dbo'
+--Imprime el mensaje: Se deneg√≥ el permiso INSERT en el objeto 'reserva', base de datos 'hoteleria', esquema 'dbo'
 
 
-/** 5- Realizar un INSERT a travÈs del procedimiento almacenado con el usuario con permiso de solo lectura
+/** 5- Realizar un INSERT a trav√©s del procedimiento almacenado con el usuario con permiso de solo lectura
 **/
 
 EXEC reservar_habitacion
@@ -223,3 +223,4 @@ FROM reserva
 WHERE nro_habitacion = 103;
 
 --En este caso, si permite realizar un INSERT
+
