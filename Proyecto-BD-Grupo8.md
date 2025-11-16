@@ -137,6 +137,37 @@ Los procedimientos almacenados forman parte de las metodologías esenciales en e
 
 Las funciones almacenadas en cambio, representan una metodología mas inclinada hacia el cálculo y consulta de datos específicos. Éstas no modifican los datos, en cambio, se recurre a ellas para realizar cálculos derivados, como obtener totales, promedios o formatos específicos, y retornar un único valor. Esta metodología permite una integración sencilla de operaciones matemáticas o de transformación en consultas, facilitando la obtención de información sin alterar los datos base. Las funciones almacenadas son especialmente útiles para estandarizar estos cálculos en diferentes consultas y asegurar una coherencia en el tratamiento de la información.
 
+##Manejo de transacciones.
+## ¿Qué es una Unidad de Transacción?
+
+Una UNAT o Unidad de Transacción es el conjunto de operaciones que se ejecutan como una unidad lógica e indivisible de trabajo dentro de una base de datos.
+Esto significa que todas las instrucciones que conforman la transacción deben completarse con éxito para que los cambios se confirmen (sean permanentes), o de lo contrario, se revierten para mantener la integridad de la información.
+
+En otras palabras, una transacción agrupa varias acciones SQL (como INSERT, UPDATE, DELETE) en un solo bloque de trabajo que cumple con el principio "todo o nada".
+
+Las UNATs garantizan que la base de datos permanezca consistente, íntegra y confiable, incluso ante fallos o errores durante la ejecución.
+Toda transacción debe cumplir con las propiedades ACID, que son fundamentales en los sistemas de gestión de bases de datos:
+
+1-Atomicidad:
+Todas las operaciones dentro de la transacción se ejecutan completamente o no se ejecuta ninguna.
+Si ocurre un error, se realiza un ROLLBACK que deja los datos como estaban antes.
+2-Consistencia:
+Una transacción debe llevar a la base de datos de un estado válido a otro, respetando reglas, claves y restricciones.
+3-Aislamiento:
+Cada transacción se ejecuta de manera independiente, sin afectar ni verse afectada por otras que estén ocurriendo al mismo tiempo.
+4-Durabilidad:
+Una vez confirmado el COMMIT, los cambios permanecen guardados incluso si ocurre una falla del sistema.
+
+##Manejo de transacción anidada:
+##¿Qué es una transacción anidada?
+
+Una transacción anidada se refiere a una transacción que se ejecuta dentro de otra transacción principal que ya está activa. Es decir, se inicia una nueva transacción mientras otra aún no ha finalizado. 
+En sistemas como SQL Server, cuando se utiliza el comando BEGIN TRANSACTION mientras hay una transacción en curso, lo que realmente ocurre es la creación de una transacción anidada.
+Este tipo de transacciones resultan muy útiles en procesos complejos donde se realizan múltiples operaciones sobre la base de datos que dependen entre sí. 
+Permiten dividir una tarea grande en partes más pequeñas, cada una con su propio control lógico, facilitando el manejo de errores y la organización del código.
+En la práctica, solo la transacción más externa tiene el control total sobre los comandos COMMIT o ROLLBACK. 
+Si dentro de una transacción interna se ejecuta un ROLLBACK, el sistema deshará todas las operaciones realizadas desde el primer BEGIN TRANSACTION, es decir, se revierte toda la transacción, no solo la parte interna.
+
 ## Capítulo III: METODOLOGÍA SEGUIDA
 
 
