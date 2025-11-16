@@ -174,7 +174,7 @@ Se comenzó el desarrollo del proyecto con una reunión para definir el caso de 
 
 Una vez establecido el marco de trabajo, iniciamos con la trayectoria establecida por la cátedra, creando un diagrama entidad-relación y avanzar con el modelo físico para la base de datos.
 
-Para la segunda parte del proyecto, distribuimos los temas de investigación entre los miembros del equipo a través de un sorteo, quedando asignados de la siguiente manera:
+Para la segunda parte del proyecto, se distribuyo los temas de investigacion a eleccion por cada miembro del grupo, quedando asignados de la siguiente manera:
 
 - Arias, Yolanda: Manejo de transacciones y transacciones anidadas.
 - Lugo, Renata: Manejo de permisos a nivel de usuarios de bases de datos.
