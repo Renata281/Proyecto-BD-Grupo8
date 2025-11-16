@@ -499,9 +499,97 @@ CREATE TABLE reserva
 
 ---
 
+### Procedimientos y Funciones Almacenadas 
+
+#### 1. Procedimientos Almacenados
+
+Los procedimientos almacenados que se llevaron a cabo para esta base de datos fueron para optimizar y facilitar el proceso de reserva de una habitación para un hotel.Los procedimientos y funciones utilizados fueron los siguientes:
+
+##### Procedimiento 1: `modificar_fecha_reserva`
+
+- **Objetivo**: Cambiar la fecha de reserva en caso de error o solicitud del cliente.
+- **Descripción**: Este procedimiento recibe como parámetros las fechas de ingreso y salida, el nro de piso y habitación.
+- **Ejemplo de Uso**:
+  ```sql
+  EXEC modificar_fecha_reserva
+    @id_reserva = 5,
+    @fecha_ingreso = '2026-03-10',
+    @fecha_salida = '2026-03-15';
+  ```
+
+##### Procedimiento 2: `cambiar_estado_habitacion`
+
+- **Objetivo**: actualiza el estado de la habitacion segun el tipo de estado que reciba como parámetro.
+- **Descripción**: Este procedimiento permite modificar el estado de una habitación.
+- **Ejemplo de Uso**:
+  ```sql
+  EXEC cambiar_estado_habitacion
+    @nro_habitacion = 301,
+    @nro_piso = 3,
+    @estado = 1;
+  ```
+
+##### Procedimiento 3: `reservar_habitacion`
+
+- **Objetivo**: Agilizar el alta de una reserva.
+- **Descripción**: Este procedimiento es el principal para manejar eficientemente el registro de una nueva reserva.
+- **Ejemplo de Uso**:
+  ```sql
+  EXEC reservar_habitacion
+    @fecha_ingreso = '2026-02-01',
+    @fecha_salida = '2026-02-07',
+    @dni_cliente = 40123456,  
+    @nro_habitacion = 202,   
+    @nro_piso = 2,
+    @id_pago = 1;            
+  ```
+
+#### 2. Funciones Almacenadas
+
+Las funciones desarrolladas fueron diseñadas para optimizar principalmente el procedimiento de reservar una habitación, haciendo el proceso mucho mas limpio y sencillo de llevar a cabo.
+
+##### Función 1: `buscar_id_cliente`
+
+- **Objetivo**: Traer el id del cliente mediante su dni.
+- **Descripción**: Esta función recibe el dni del cliente y devuelve su id, haciendo mas sencillo la accion de reserva.
+- **Ejemplo de Uso**:
+  ```sql
+  SELECT buscar_id_cliente(40123456);
+  ```
+
+##### Función 2: `habitacion_disponible`
+
+- **Objetivo**: Indica si la habitacion está disponible o no.
+- **Descripción**: Esta función devuelve 1 si la habitación se encuentra disponible para un registro nuevo en un intervalo de fechas.
+- **Ejemplo de Uso**:
+  ```sql
+  SELECT habitacion_disponible(
+    @nro_habitacion = 101, 
+    @nro_piso = 1, 
+    @fecha_ingreso = '2025-12-20', 
+    @fecha_salida = '2025-12-26'
+	);
+  ```
+
+##### Función 3: `calcular_monto`
+
+- **Objetivo**: Automatizar el cálculo del monto final de la reserva.
+- **Descripción**: Esta función recibe las fechas de ingreso y salida, el nro de piso y de habitación para calcular el monto total segun la cantidad de dias y precio por noche de la habitación.
+- **Ejemplo de Uso**:
+  ```sql
+  SELECT calcular_monto(
+    @nro_habitacion = 101, 
+    @id_piso = 1, 
+    @fecha_ingreso = '2025-12-20', 
+    @fecha_salida = '2025-12-26'
+	);
+  ```
+
+#### 3. Resultados de las Pruebas de Rendimiento
+
+
 
 ## Uso de Índices
-
 
 A fines prácticos, para lograr obtener una mejor comprensión sobre el uso de índices y su impacto en las consultas, se insertó 500,000 registros sobre la tabla de reserva. Posteriormente se realizó una consulta para obtener las reservas del primer trimestre de 2024 (WHERE fecha_ingreso BETWEEN '2024-01-01' AND '2024-03-31') y se comparó los resultados.
 
