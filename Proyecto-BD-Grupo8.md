@@ -781,7 +781,7 @@ Las transacciones y las transacciones anidadas: aseguran que los cambios en la b
 Optimización de consultas atraves de índices: el uso de índices es fundamental para mejorar el rendimiento en las consultas de una base de datos. Una correcta estrategia de indexación permite que las búsquedas sean más rápidas y eficientes, reduciendo la carga del sistema y optimizando el acceso a la información, especialmente cuando se trabaja con grandes volúmenes de datos.
 Sin embargo, también es importante considerar que los índices tienen sus desventajas: ocupan espacio adicional y pueden volver más lentas las operaciones de inserción, actualización y eliminación, ya que deben mantenerse sincronizados con los datos. Por eso, su uso debe planificarse de forma equilibrada, creando únicamente aquellos índices que realmente aporten valor al rendimiento general del sistema.
 
-
+En conclusión, este proyecto nos permitió comprender y desarrollar metodologías más avanzadas y herramientas que consideramos clave para la administración de bases de datos. Además, las técnicas implementadas, como la gestión de permisos, el uso de procedimientos y funciones almacenadas, la optimización mediante índices y el manejo de transacciones, nos ofrecen una experiencia que podremos volver a implementar y adaptar en futuros proyectos. 
 
 ## Capítulo VI: BIBLIOGRAFÍA 
 
