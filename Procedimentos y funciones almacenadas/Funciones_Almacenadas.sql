@@ -1,4 +1,3 @@
-´´´ SQL
 /*
 buscar cliente por dni, devuelve id_cliente
 */
@@ -80,5 +79,3 @@ begin
     return @monto_calculado;
 end
 go
-
-´´´
