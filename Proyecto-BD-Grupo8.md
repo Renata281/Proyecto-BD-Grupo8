@@ -547,6 +547,12 @@ CREATE TABLE reserva
 ```
 
 ---
+### Manejo de permisos a nivel de usuarios de base de datos
+## Permisos a nivel de usuarios:
+Se implementó la gestión de permisos en SQL Server mediante la creación de dos usuarios con diferentes niveles de acceso: al primero se le asigno como usuario administrador con permisos completos sobre la base de datos mediante el rol db_owner, le permite realizar operaciones de lectura, escritura y ejecución de procedimientos. El segundo usuario se le asigno permisos de solo lectura sobre las tablas mediante el rol db_datareader, en este caso no puede insertar datos directamente en las tablas y se le otorgó permiso de ejecución sobre el procedimiento almacenado "reserva_habitacion", permitiéndole insertar reservas de manera controlada sin tener acceso directo a la tabla.
+
+## Permisos a nivel de roles del DBMS:
+En cuanto al nivel de roles, se crearon dos usuarios en el que a uno de ellos se le asignó un rol de solo lectura para la tabla "cliente", mientras que el otro usuario que no se le otorgó dicho rol no puede acceder a los datos de la respectiva tabla.
 
 ### Procedimientos y Funciones Almacenadas 
 
