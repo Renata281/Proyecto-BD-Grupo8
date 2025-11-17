@@ -778,7 +778,98 @@ Por otro lado, la inclusión de otras columnas en un índice agrupado adicional 
 
 Además, se observó una mejora drástica en el tiempo de CPU después de agregar los índices, bajando de 94 ms a 31 ms en la primera prueba con el índice agrupado simple. El índice agrupado extendido (compuesto) mostró un tiempo de CPU idéntico de 31 ms y un tiempo transcurrido total ligeramente menor, demostrando ser marginalmente más eficiente en E/S (IO) para esta consulta.
 
+## Transacción simple:
+Transacción simple
+Para garantizar la atomicidad de varias operaciones, se implementó una transacción simple con BEGIN TRANSACTION, COMMIT y ROLLBACK, junto con manejo de errores mediante TRY…CATCH.
 
+Operaciones realizadas dentro de la transacción:
+1-Insertar un nuevo cliente.
+2-Insertar una reserva asociada a ese cliente.
+3-Actualizar el estado de una habitación.
+
+BEGIN TRY
+    BEGIN TRANSACTION;
+
+    INSERT INTO cliente (nombre, apellido, email, telefono, dni)
+    VALUES ('Ana', 'Gómez', 'ana.gomez@example.com', 1122334455, 44556677);
+
+    DECLARE @nuevoCliente INT = SCOPE_IDENTITY();
+
+    INSERT INTO reserva (fecha_ingreso, fecha_salida, monto_total, id_cliente, nro_habitacion, id_piso, id_pago)
+    VALUES ('2025-11-10', '2025-11-15', 150000, @nuevoCliente, 101, 1, 1);
+
+    UPDATE habitacion
+    SET id_estado = 2
+    WHERE nro_habitacion = 101 AND id_piso = 1;
+
+    COMMIT TRANSACTION;
+END TRY
+BEGIN CATCH
+    ROLLBACK TRANSACTION;
+    PRINT ERROR_MESSAGE();
+END CATCH;
+
+Prueba con error intencional:
+*Se provocó un error insertando una reserva con una habitación inexistente:
+
+INSERT INTO reserva (...)
+VALUES ('2025-11-20', '2025-11-25', 200000, @nuevoCliente, 999, 9, 1);
+
+Esto activa el CATCH, se hace ROLLBACK, y ningún dato queda guardado.
+Resultados:
+*Sin error: se insertó cliente, reserva y actualización correctamente.
+*Con error: se revirtió todo, dejando la base de datos consistente.
+*Se comprobó el principio de atomicidad (“todo o nada”).
+
+## Transacción anidada:
+En la segunda parte se implementaron transacciones anidadas, donde cada operación se encapsula en su propia sub-transacción, pero todas dependen de una transacción principal.
+
+BEGIN TRY
+    BEGIN TRANSACTION TransaccionPrincipal;
+
+    BEGIN TRANSACTION TransaccionCliente;
+        INSERT INTO cliente (nombre, apellido, email, telefono, dni)
+        VALUES ('Rocio', 'Benitez', 'rb@gmail.com', 3795111122, 40222333);
+        DECLARE @nuevoCliente INT = SCOPE_IDENTITY();
+    COMMIT TRANSACTION TransaccionCliente;
+
+    BEGIN TRANSACTION TransaccionReserva;
+        INSERT INTO reserva (...)
+        VALUES ('2025-12-20', '2025-12-22', 48000, @nuevoCliente, 101, 1, 1);
+    COMMIT TRANSACTION TransaccionReserva;
+
+    BEGIN TRANSACTION TransaccionUpdateHabitacion;
+        UPDATE habitacion
+        SET id_estado = 2
+        WHERE nro_habitacion = 101 AND id_piso = 1;
+    COMMIT TRANSACTION TransaccionUpdateHabitacion;
+
+    COMMIT TRANSACTION TransaccionPrincipal;
+END TRY
+BEGIN CATCH
+    ROLLBACK TRANSACTION TransaccionPrincipal;
+END CATCH;
+
+Prueba con error intencional en transacción anidada:
+*Para forzar el fallo se usó una división por cero:
+
+DECLARE @a INT = 1, @b INT = 0;
+SELECT @a / @b;   -- Error intencional
+
+Esto activa el bloque CATCH y se ejecuta:
+
+ROLLBACK TRANSACTION TransaccionPrincipal;
+
+Lo que deshace todos los commits internos.
+
+Resultados:
+1-En la ejecución sin error:
+Se insertó cliente, reserva y actualización de habitación sin problemas.
+2-En la ejecución con error:
+Ningún dato fue insertado.
+Se comprobó que las transacciones internas dependen de la transacción principal.
+3-El manejo TRY…CATCH evitó inconsistencias.
+ 
 ## Capítulo V: CONCLUSIONES 
 - Manejo de permisos a nivel de usuarios y roles en bases de datos: es fundamental para garantizar la seguridad y el control de acceso. Al asignar correctamente los permisos nos permite definir quién puede acceder a los datos y qué acciones puede realizar, asegurando la integridad y confidencialidad de la información.
 Los roles, tanto predefinidos como personalizados, facilitan la administración de permisos en grupos de usuarios, ya que simplifica el mantenimiento y reduce errores en entornos complejos. Además, limita los riesgos de accesos indebidos y errores humanos.
