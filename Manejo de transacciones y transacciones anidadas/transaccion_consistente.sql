@@ -160,3 +160,5 @@ TRY…CATCH permitió manejar el error sin que la base quede en un estado incons
 SQL Server solo confirma realmente cuando se hace el COMMIT final de la transacción externa.
 
 
+    
+
