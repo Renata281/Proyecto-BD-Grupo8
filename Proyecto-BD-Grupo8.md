@@ -878,14 +878,14 @@ Lo que deshace todos los commits internos.
 
 Resultados:
 
-1-En la ejecución sin error:
+*En la ejecución sin error:
 Se insertó cliente, reserva y actualización de habitación sin problemas.
 
-2-En la ejecución con error:
+*En la ejecución con error:
 Ningún dato fue insertado.
 Se comprobó que las transacciones internas dependen de la transacción principal.
 
-3-El manejo TRY…CATCH evitó inconsistencias.
+*El manejo TRY…CATCH evitó inconsistencias.
  
 ## Capítulo V: CONCLUSIONES 
 - Manejo de permisos a nivel de usuarios y roles en bases de datos: es fundamental para garantizar la seguridad y el control de acceso. Al asignar correctamente los permisos nos permite definir quién puede acceder a los datos y qué acciones puede realizar, asegurando la integridad y confidencialidad de la información.
