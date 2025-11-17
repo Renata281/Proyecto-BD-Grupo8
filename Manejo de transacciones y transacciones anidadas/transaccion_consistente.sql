@@ -1,4 +1,4 @@
-/** Transacciones*/
+/**Primera parte: Transacciones*/
 Utilizar hoteleria;
 
 /** 1-insertar registros en tabla cliente y reserva. Luego actualizar estado de habitación.**/
@@ -76,7 +76,7 @@ Si una sola operación falla, toda la transacción se revierte, asegurando que l
 Esto confirma el principio de ACID (Atomicidad, Consistencia, Aislamiento y Durabilidad) en el manejo de transacciones.
 
 
-/** Transaccion Anidada**/
+/**Segunda Parte: Transaccion Anidada**/
 /** 1-insertar registros en tabla cliente y reserva. Luego actualizar estado de habitación.**/
 
 BEGIN TRY
