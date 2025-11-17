@@ -783,9 +783,13 @@ Transacción simple
 Para garantizar la atomicidad de varias operaciones, se implementó una transacción simple con BEGIN TRANSACTION, COMMIT y ROLLBACK, junto con manejo de errores mediante TRY…CATCH.
 
 Operaciones realizadas dentro de la transacción:
+
 1-Insertar un nuevo cliente.
+
 2-Insertar una reserva asociada a ese cliente.
+
 3-Actualizar el estado de una habitación.
+
 
 BEGIN TRY
     BEGIN TRANSACTION;
