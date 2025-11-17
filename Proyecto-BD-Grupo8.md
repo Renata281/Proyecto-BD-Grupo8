@@ -791,7 +791,7 @@ Operaciones realizadas dentro de la transacción:
 3-Actualizar el estado de una habitación.
 
 
-BEGIN TRY
+    BEGIN TRY
     BEGIN TRANSACTION;
 
     INSERT INTO cliente (nombre, apellido, email, telefono, dni)
@@ -807,28 +807,36 @@ BEGIN TRY
     WHERE nro_habitacion = 101 AND id_piso = 1;
 
     COMMIT TRANSACTION;
-END TRY
-BEGIN CATCH
+    END TRY
+    BEGIN CATCH
     ROLLBACK TRANSACTION;
     PRINT ERROR_MESSAGE();
-END CATCH;
+    END CATCH;
+
 
 Prueba con error intencional:
+
 *Se provocó un error insertando una reserva con una habitación inexistente:
 
-INSERT INTO reserva (...)
-VALUES ('2025-11-20', '2025-11-25', 200000, @nuevoCliente, 999, 9, 1);
+    INSERT INTO reserva (...)
+    VALUES ('2025-11-20', '2025-11-25', 200000, @nuevoCliente, 999, 9, 1);
+
 
 Esto activa el CATCH, se hace ROLLBACK, y ningún dato queda guardado.
+
 Resultados:
+
 *Sin error: se insertó cliente, reserva y actualización correctamente.
+
 *Con error: se revirtió todo, dejando la base de datos consistente.
+
 *Se comprobó el principio de atomicidad (“todo o nada”).
+
 
 ## Transacción anidada:
 En la segunda parte se implementaron transacciones anidadas, donde cada operación se encapsula en su propia sub-transacción, pero todas dependen de una transacción principal.
 
-BEGIN TRY
+    BEGIN TRY
     BEGIN TRANSACTION TransaccionPrincipal;
 
     BEGIN TRANSACTION TransaccionCliente;
@@ -849,29 +857,34 @@ BEGIN TRY
     COMMIT TRANSACTION TransaccionUpdateHabitacion;
 
     COMMIT TRANSACTION TransaccionPrincipal;
-END TRY
-BEGIN CATCH
+    END TRY
+    BEGIN CATCH
     ROLLBACK TRANSACTION TransaccionPrincipal;
-END CATCH;
+    END CATCH;
+
 
 Prueba con error intencional en transacción anidada:
+
 *Para forzar el fallo se usó una división por cero:
 
-DECLARE @a INT = 1, @b INT = 0;
-SELECT @a / @b;   -- Error intencional
+    DECLARE @a INT = 1, @b INT = 0;
+    SELECT @a / @b;   -- Error intencional
 
 Esto activa el bloque CATCH y se ejecuta:
 
-ROLLBACK TRANSACTION TransaccionPrincipal;
+    ROLLBACK TRANSACTION TransaccionPrincipal;
 
 Lo que deshace todos los commits internos.
 
 Resultados:
+
 1-En la ejecución sin error:
 Se insertó cliente, reserva y actualización de habitación sin problemas.
+
 2-En la ejecución con error:
 Ningún dato fue insertado.
 Se comprobó que las transacciones internas dependen de la transacción principal.
+
 3-El manejo TRY…CATCH evitó inconsistencias.
  
 ## Capítulo V: CONCLUSIONES 
